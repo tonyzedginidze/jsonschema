@@ -108,6 +108,20 @@ To do so we make use of APIs from the referencing library to create a `referenci
         ],
     )
 
+.. figure:: diagrams/registry-uri-aliases.png
+   :alt: The HTTP URI and URN registered above both identify the same
+         non-negative integer schema resource, interpreted under Draft 2020-12.
+   :width: 708px
+
+   Two identifiers, one resource. The HTTP URI is
+   ``http://example.com/nonneg-int-schema`` (abbreviated in the diagram);
+   the URN is ``urn:nonneg-integer-schema``. Both registry entries refer to
+   the same `referencing.Resource`. Arrows show identifier-to-resource
+   mappings, not network requests: either URI resolves from this registry
+   without downloading a schema.
+   :download:`Download SVG <diagrams/registry-uri-aliases.svg>` ·
+   Diagram by `svgdiagram.ai <https://svgdiagram.ai>`__.
+
 What's above is likely mostly self-explanatory, other than the presence of the `referencing.Resource.from_contents` function.
 Its purpose is to convert a piece of "opaque" JSON (or really a Python `dict` containing deserialized JSON) into an object which indicates what *version* of JSON Schema the schema is meant to be interpreted under.
 Calling it will inspect a :kw:`$schema` keyword present in the given schema and use that to associate the JSON with an appropriate `specification <referencing.Specification>`.
